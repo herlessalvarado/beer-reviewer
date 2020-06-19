@@ -12,6 +12,7 @@ func BeerRouter() *mux.Router {
 
 	r.HandleFunc("/beers", services.PopulateBeers).Methods("POST")
 	r.HandleFunc("/beers", services.GetBeers).Methods("GET")
+	r.HandleFunc("/beer", services.CreateBeer).Methods("POST")
 
 	return r
 }

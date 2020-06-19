@@ -21,3 +21,12 @@ func GetBeers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(models.Beers)
 }
+
+// CreateBeer creates a beer
+func CreateBeer(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var beer models.Beer
+	_ = json.NewDecoder(r.Body).Decode(&beer)
+	models.Beers = append(models.Beers, beer)
+	json.NewEncoder(w).Encode(beer)
+}
